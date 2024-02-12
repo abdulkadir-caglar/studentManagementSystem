@@ -5,12 +5,9 @@ import studentManagementSystem.repository.dbConfig.DatabaseConfig;
 public class CourseTable {
 	private DatabaseConfig db = new DatabaseConfig();
 	
-	private String query = "CREATE TABLE student ("
+	private String query = "CREATE TABLE course ("
 		    + "id INT(11) PRIMARY KEY AUTO_INCREMENT,"
-		    + "student_name VARCHAR(50),"
-		    + "student_last_name VARCHAR(50),"
-		    + "email VARCHAR(100),"
-		    + "password VARCHAR(64))";
+		    + "course_name VARCHAR(100))";
 	
 	public void create() {
 		db.createDB(query);

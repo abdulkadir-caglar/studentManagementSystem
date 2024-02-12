@@ -10,7 +10,7 @@ public class StudentTable {
 		    + "student_name VARCHAR(50),"
 		    + "student_last_name VARCHAR(50),"
 		    + "email VARCHAR(100),"
-		    + "password VARCHAR(64),";
+		    + "password VARCHAR(64))";
 	
 	public void create() {
 		db.createDB(query);
