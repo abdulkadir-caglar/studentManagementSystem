@@ -2,7 +2,7 @@ package studentManagementSystem;
 
 import java.awt.EventQueue;
 
-import studentManagementSystem.view.MainFrame;
+import studentManagementSystem.view.main.MainFrame;
 
 public class Application {
 	
