@@ -3,6 +3,8 @@ package studentManagementSystem.view.main;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import studentManagementSystem.view.register.RegisterFrame;
 
 import javax.swing.JButton;
 
@@ -49,7 +53,6 @@ public class MainFrame extends JFrame {
 		
         panel.setLayout(new GridLayout(8, 2, 5, 10));
 		
-        
 		panel.add(lblEmail);
 		panel.add(emailTF);
 		panel.add(new JLabel());
@@ -59,6 +62,14 @@ public class MainFrame extends JFrame {
 		
 		btnLogin = new JButton("Log In");
 		btnRegister = new JButton("Register");
+		btnRegister.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new RegisterFrame().setVisible(true);;
+			}
+		});
 		
 		Font btnFont = new Font("Arial", Font.PLAIN, 12);
 		btnLogin.setFont(btnFont);
