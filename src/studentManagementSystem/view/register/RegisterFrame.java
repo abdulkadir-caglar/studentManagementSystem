@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class RegisterFrame extends JFrame {
+import studentManagementSystem.view.main.MainFrame;
+
+public class RegisterFrame extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JPanel panel;
@@ -92,12 +96,21 @@ public class RegisterFrame extends JFrame {
 		btnRegister = new JButton("Register");
 		btnRegister.setFont(font);
 		panel.add(btnRegister);
+		btnRegister.addActionListener(this);
 		
 		btnLogin = new JButton("Log In");
 		btnLogin.setFont(font);
 		panel.add(btnLogin);
-		
-		
+		btnLogin.addActionListener(this);
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()== btnRegister) {
+			
+		}else if(e.getSource() == btnLogin) {
+			dispose();
+			new MainFrame().setVisible(true);
+		}
+	}
 }
