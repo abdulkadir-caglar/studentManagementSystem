@@ -10,8 +10,7 @@ public class Application {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
-					frame.setVisible(true);
+					MainFrame.getInstance().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
