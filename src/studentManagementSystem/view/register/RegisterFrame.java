@@ -15,10 +15,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import studentManagementSystem.controller.student.StudentController;
+import studentManagementSystem.dto.studentDto.StudentDto;
 import studentManagementSystem.view.main.MainFrame;
 
-public class RegisterFrame extends JFrame implements ActionListener {
+public class RegisterFrame extends JFrame {
 
+	private static RegisterFrame instance;
+	private StudentDto studentDto;
+	private StudentController studentController;
+	
 	private JPanel contentPane;
 	private JPanel panel;
 	
@@ -34,6 +40,12 @@ public class RegisterFrame extends JFrame implements ActionListener {
 	
 	private JButton btnRegister;
 	private JButton btnLogin;
+	
+	public static RegisterFrame getInstance() {
+		if(instance == null) {
+			instance = new RegisterFrame();
+		}return instance;
+	}
 	
 	public RegisterFrame() {
 		setTitle("Register");
@@ -96,21 +108,27 @@ public class RegisterFrame extends JFrame implements ActionListener {
 		btnRegister = new JButton("Register");
 		btnRegister.setFont(font);
 		panel.add(btnRegister);
-		btnRegister.addActionListener(this);
 		
 		btnLogin = new JButton("Log In");
 		btnLogin.setFont(font);
 		panel.add(btnLogin);
-		btnLogin.addActionListener(this);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()== btnRegister) {
-			
-		}else if(e.getSource() == btnLogin) {
-			dispose();
-			new MainFrame().setVisible(true);
-		}
+	
+
+	public JTextField getNameTF() {
+		return nameTF;
+	}
+
+	public JTextField getSurnameTF() {
+		return surnameTF;
+	}
+
+	public JTextField getEmailTF() {
+		return emailTF;
+	}
+
+	public JTextField getPasswordTF() {
+		return passwordTF;
 	}
 }
