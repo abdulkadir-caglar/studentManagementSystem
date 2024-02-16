@@ -3,8 +3,6 @@ package studentManagementSystem.view.main;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,11 +11,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import studentManagementSystem.view.register.RegisterFrame;
+import studentManagementSystem.viewController.MainFrameController;
 
 import javax.swing.JButton;
 
 public class MainFrame extends JFrame {
+	private static MainFrame instance;
 
 	private JPanel contentPane;
 	private JLabel lblEmail;
@@ -26,6 +25,13 @@ public class MainFrame extends JFrame {
 	private JTextField passwordTF;
 	private JButton btnLogin;
 	private JButton btnRegister;
+	public JButton empty;
+	
+	public static MainFrame getInstance() {
+		if(instance == null) {
+			instance = new MainFrame();
+		}return instance;
+	}
 
 	public MainFrame() {
 		setTitle("Student Info");
@@ -51,7 +57,7 @@ public class MainFrame extends JFrame {
 		emailTF.setColumns(20);
 		passwordTF.setColumns(20);
 		
-        panel.setLayout(new GridLayout(8, 2, 5, 10));
+        panel.setLayout(new GridLayout(9, 2, 5, 10));
 		
 		panel.add(lblEmail);
 		panel.add(emailTF);
@@ -62,14 +68,7 @@ public class MainFrame extends JFrame {
 		
 		btnLogin = new JButton("Log In");
 		btnRegister = new JButton("Register");
-		btnRegister.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new RegisterFrame().setVisible(true);;
-			}
-		});
+		btnRegister.addActionListener(new MainFrameController());
 		
 		Font btnFont = new Font("Arial", Font.PLAIN, 12);
 		btnLogin.setFont(btnFont);
@@ -80,6 +79,10 @@ public class MainFrame extends JFrame {
 		
 		contentPane.add(new JLabel());
 		contentPane.add(panel);
+	}
+	
+	public JButton getBtnRegister() {
+		return this.btnRegister;
 	}
 
 }
