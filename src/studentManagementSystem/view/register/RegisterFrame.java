@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import studentManagementSystem.controller.student.StudentController;
 import studentManagementSystem.dto.studentDto.StudentDto;
 import studentManagementSystem.view.main.MainFrame;
+import studentManagementSystem.viewController.RegisterFrameController;
 
 public class RegisterFrame extends JFrame {
 
@@ -107,6 +108,7 @@ public class RegisterFrame extends JFrame {
 		Font font = new Font("Arial", Font.PLAIN, 12);
 		btnRegister = new JButton("Register");
 		btnRegister.setFont(font);
+		btnRegister.addActionListener(new RegisterFrameController());
 		panel.add(btnRegister);
 		
 		btnLogin = new JButton("Log In");
@@ -130,5 +132,9 @@ public class RegisterFrame extends JFrame {
 
 	public JTextField getPasswordTF() {
 		return passwordTF;
+	}
+	
+	public JButton getBtnRegister() {
+		return btnRegister;
 	}
 }
