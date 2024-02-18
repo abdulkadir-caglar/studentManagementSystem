@@ -1,30 +1,23 @@
 package studentManagementSystem.view.register;
 
 import java.awt.Font;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import studentManagementSystem.controller.student.StudentController;
-import studentManagementSystem.dto.studentDto.StudentDto;
-import studentManagementSystem.view.main.MainFrame;
 import studentManagementSystem.viewController.RegisterFrameController;
 
 public class RegisterFrame extends JFrame {
 
 	private static RegisterFrame instance;
-	private StudentDto studentDto;
-	private StudentController studentController;
 	
 	private JPanel contentPane;
 	private JPanel panel;
@@ -37,7 +30,7 @@ public class RegisterFrame extends JFrame {
 	private JTextField nameTF;
 	private JTextField surnameTF;
 	private JTextField emailTF;
-	private JTextField passwordTF;
+	private JPasswordField passwordTF;
 	
 	private JButton btnRegister;
 	private JButton btnLogin;
@@ -99,7 +92,7 @@ public class RegisterFrame extends JFrame {
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblPassword);
 		
-		passwordTF = new JTextField();
+		passwordTF = new JPasswordField();
 		passwordTF.setColumns(20);
 		panel.add(passwordTF);
 		
@@ -115,8 +108,6 @@ public class RegisterFrame extends JFrame {
 		btnLogin.setFont(font);
 		panel.add(btnLogin);
 	}
-
-	
 
 	public JTextField getNameTF() {
 		return nameTF;
