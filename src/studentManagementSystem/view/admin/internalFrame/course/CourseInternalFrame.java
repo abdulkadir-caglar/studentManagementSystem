@@ -1,12 +1,55 @@
 package studentManagementSystem.view.admin.internalFrame.course;
 
-import javax.swing.JInternalFrame;
+import java.awt.Color;
+import java.awt.Font;
 
-public class CourseInternalFrame extends JInternalFrame {
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import studentManagementSystem.view.admin.internalFrame.BaseInternalFrame;
+
+public class CourseInternalFrame extends BaseInternalFrame {
+	private static CourseInternalFrame instance;
+	
+	private JTable table;
+	private JScrollPane scrollPane;
+	private JButton btnEdit;
+	private JButton btnRemove;
+	private JButton btnAdd; 
+	
+	public static CourseInternalFrame getInstance() {
+		if(instance == null) {
+			instance = new CourseInternalFrame();
+		}return instance;
+	}
 
 	public CourseInternalFrame() {
-		setBounds(100, 100, 450, 300);
-
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBackground(Color.WHITE);
+		scrollPane.setBounds(10, 10, 303, 342);
+		getContentPane().add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setColumnHeaderView(table);
+		
+		Font font = new Font("Arial", Font.PLAIN, 16);
+		
+		btnEdit = new JButton("Edit");
+		btnEdit.setBounds(368, 119, 115, 31);
+		btnEdit.setFont(font);
+		getContentPane().add(btnEdit);
+		
+		btnRemove = new JButton("Remove");
+		btnRemove.setBounds(368, 159, 115, 31);
+		btnRemove.setFont(font);
+		getContentPane().add(btnRemove);
+		
+		btnAdd = new JButton("New");
+		btnAdd.setBounds(368, 200, 115, 31);
+		btnAdd.setFont(font);
+		getContentPane().add(btnAdd);
 	}
 
 }
