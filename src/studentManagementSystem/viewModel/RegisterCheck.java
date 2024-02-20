@@ -5,12 +5,12 @@ import javax.swing.JOptionPane;
 import studentManagementSystem.validator.EmailValidator;
 import studentManagementSystem.view.register.RegisterFrame;
 
-public class Check {
-	private static Check instance;
+public class RegisterCheck {
+	private static RegisterCheck instance;
 	
-	public static Check getInstance() {
+	public static RegisterCheck getInstance() {
 		if(instance == null) {
-			instance = new Check();
+			instance = new RegisterCheck();
 		}return instance;
 	}
 	
