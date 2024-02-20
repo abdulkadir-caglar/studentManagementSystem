@@ -106,6 +106,7 @@ public class RegisterFrame extends JFrame {
 		
 		btnLogin = new JButton("Log In");
 		btnLogin.setFont(font);
+		btnLogin.addActionListener(new RegisterFrameController());
 		panel.add(btnLogin);
 	}
 
@@ -127,5 +128,9 @@ public class RegisterFrame extends JFrame {
 	
 	public JButton getBtnRegister() {
 		return btnRegister;
+	}
+	
+	public JButton getBtnLogin() {
+		return this.btnLogin;
 	}
 }
