@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -22,7 +23,7 @@ public class MainFrame extends JFrame {
 	private JLabel lblEmail;
 	private JLabel lblPassword;
 	private JTextField emailTF;
-	private JTextField passwordTF;
+	private JPasswordField passwordTF;
 	private JButton btnLogin;
 	private JButton btnRegister;
 	public JButton empty;
@@ -45,7 +46,7 @@ public class MainFrame extends JFrame {
 		lblEmail = new JLabel("Email");
 		emailTF = new JTextField();
 		lblPassword = new JLabel("Password");
-		passwordTF = new JTextField();
+		passwordTF = new JPasswordField();
 		JPanel panel = new JPanel();
 		
 		Font labelFont = new Font("Arial", Font.BOLD, 14);
@@ -66,15 +67,16 @@ public class MainFrame extends JFrame {
 		panel.add(passwordTF);
 		panel.add(new JLabel());
 		
+		Font btnFont = new Font("Arial", Font.PLAIN, 12);
+		
 		btnLogin = new JButton("Log In");
+		btnLogin.addActionListener(new MainFrameController());
+		btnLogin.setFont(btnFont);
+		panel.add(btnLogin);
+		
 		btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new MainFrameController());
-		
-		Font btnFont = new Font("Arial", Font.PLAIN, 12);
-		btnLogin.setFont(btnFont);
 		btnRegister.setFont(btnFont);
-		
-		panel.add(btnLogin);
 		panel.add(btnRegister);
 		
 		contentPane.add(new JLabel());
@@ -83,6 +85,18 @@ public class MainFrame extends JFrame {
 	
 	public JButton getBtnRegister() {
 		return this.btnRegister;
+	}
+	
+	public JButton getBtnLogin() {
+		return this.btnLogin;
+	}
+	
+	public JTextField getEmailTF() {
+		return this.emailTF;
+	}
+	
+	public JPasswordField getPasswordTF() {
+		return this.passwordTF;
 	}
 
 }
