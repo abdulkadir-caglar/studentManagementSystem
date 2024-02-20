@@ -7,20 +7,26 @@ import javax.swing.JOptionPane;
 
 import studentManagementSystem.controller.student.StudentController;
 import studentManagementSystem.dto.studentDto.StudentDto;
+import studentManagementSystem.view.main.MainFrame;
 import studentManagementSystem.view.register.RegisterFrame;
-import studentManagementSystem.viewModel.Check;
+import studentManagementSystem.viewModel.RegisterCheck;
 
 public class RegisterFrameController implements ActionListener{
-	StudentController studentController = new StudentController();
-	StudentDto studentDto = new StudentDto();
+	private final StudentController studentController = new StudentController();
+	private final StudentDto studentDto = new StudentDto();
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == RegisterFrame.getInstance().getBtnRegister()) {
-			if(Check.getInstance().checkRegisterFields()) {
+			if(RegisterCheck.getInstance().checkRegisterFields()) {
 				studentController.saveStudent(studentDto.setStudent());
 				JOptionPane.showMessageDialog(null, "Successfully saved.");
 			}
+		}
+		
+		if(e.getSource() == RegisterFrame.getInstance().getBtnLogin()) {
+			RegisterFrame.getInstance().dispose();
+			MainFrame.getInstance().setVisible(true);
 		}
 	}
 	
