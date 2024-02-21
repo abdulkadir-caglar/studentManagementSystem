@@ -3,11 +3,15 @@ package studentManagementSystem.viewController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import studentManagementSystem.dto.passwordDto.PasswordConverter;
+import studentManagementSystem.encryptor.Encryptor;
 import studentManagementSystem.view.admin.AdminFrame;
 import studentManagementSystem.view.main.MainFrame;
 import studentManagementSystem.view.register.RegisterFrame;
 
 public class MainFrameController implements ActionListener{
+	Encryptor encryptor = new Encryptor();
+	PasswordConverter pc = new PasswordConverter();
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -17,8 +21,8 @@ public class MainFrameController implements ActionListener{
 		}
 		
 		if(e.getSource() == MainFrame.getInstance().getBtnLogin()) {
-			char[] passwordChars = MainFrame.getInstance().getPasswordTF().getPassword();
-			if(MainFrame.getInstance().getEmailTF().getText().equals("admin") && new String(passwordChars).equals("admin")) {
+			
+			if(MainFrame.getInstance().getEmailTF().getText().equals("admin") && pc.convertPassword().equals("admin")) {
 				MainFrame.getInstance().dispose();
 				AdminFrame.getInstance().setVisible(true);
 			}
