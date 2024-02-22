@@ -2,6 +2,7 @@ package studentManagementSystem.viewController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
@@ -18,9 +19,17 @@ public class RegisterFrameController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == RegisterFrame.getInstance().getBtnRegister()) {
-			if(RegisterCheck.getInstance().checkRegisterFields()) {
-				studentController.saveStudent(studentDto.setStudent());
-				JOptionPane.showMessageDialog(null, "Successfully saved.");
+			try {
+				if(RegisterCheck.getInstance().checkRegisterFields()) {
+					if(studentController.getStudentByEmail().next()) {
+						JOptionPane.showMessageDialog(null, "Mail address already exist.");
+					}else {
+						studentController.saveStudent(studentDto.setStudent());
+					JOptionPane.showMessageDialog(null, "Successfully saved.");
+					}
+				}
+			} catch (SQLException exp) {
+				exp.printStackTrace();
 			}
 		}
 		
