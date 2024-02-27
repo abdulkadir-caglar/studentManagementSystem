@@ -27,7 +27,7 @@ public class AdminFrame extends JFrame {
 		contentPane = new JPanel(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
-		navBar = new AdminNavBar();
+		navBar = AdminNavBar.getInstance();
 		navBar.setSize(786, 50);
 		navBar.setLocation(0, 10);
 		
