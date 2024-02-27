@@ -9,16 +9,32 @@ import studentManagementSystem.view.admin.internalFrame.student.StudentInternalF
 import studentManagementSystem.view.admin.navbar.AdminNavBar;
 
 public class AdminNavbarController implements ActionListener{
-
+	StudentInternalFrame student = StudentInternalFrame.getInstance();
+	CourseInternalFrame course =  CourseInternalFrame.getInstance();
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == AdminNavBar.getInstance().getBtnStudent()) {
-			System.out.println("student");
-			AdminFrame.getInstance().getDesktopPane().add(StudentInternalFrame.getInstance());
+			if(course.isVisible()) {
+				course.setVisible(false);
+				AdminFrame.getInstance().getDesktopPane().remove(course);
+			}
+			if(!student.isVisible())
+				if (!AdminFrame.getInstance().getDesktopPane().isAncestorOf(student)) {
+                    AdminFrame.getInstance().getDesktopPane().add(student);
+                }
+				student.setVisible(true);
 		}
 		if(e.getSource() == AdminNavBar.getInstance().getBtnCourse()) {
-			System.out.println("course");
-			AdminFrame.getInstance().getDesktopPane().add(CourseInternalFrame.getInstance());
+			if(student.isVisible()) {
+				student.setVisible(false);
+				AdminFrame.getInstance().getDesktopPane().remove(student);
+			}	
+			if(!course.isVisible()) {
+				if (!AdminFrame.getInstance().getDesktopPane().isAncestorOf(course)) {
+                    AdminFrame.getInstance().getDesktopPane().add(course);
+                }
+				course.setVisible(true);
+			}		
 		}
 	}
 }
