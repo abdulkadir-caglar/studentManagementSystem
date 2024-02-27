@@ -28,25 +28,28 @@ public class MainFrameController implements ActionListener{
 		}
 		
 		if(e.getSource() == MainFrame.getInstance().getBtnLogin()) {
-			try {
-				ResultSet rs = studentController.getStudentByLogin();
-				
-				if(LoginCheck.getInstance().loginCheck()) {
-					if(MainFrame.getInstance().getEmailTF().getText().equals("admin") && pc.convertPassword().equals("admin")) {
-						MainFrame.getInstance().dispose();
-						AdminFrame.getInstance().setVisible(true);
-					}else if(rs.next()) {
-						session.setUserId(rs.getInt("id"));
-						session.setUserName(rs.getString("student_name"));
-						session.setUserSurname(rs.getString("student_last_name"));
-						session.setUserEmail(rs.getString("email"));
-					}else {
-						JOptionPane.showMessageDialog(null, "User not found.");
-					}
-				}	
-			} catch (SQLException exp) {
-				exp.printStackTrace();
+			if(MainFrame.getInstance().getEmailTF().getText().equals("admin") && pc.convertPassword().equals("admin")) {
+				MainFrame.getInstance().dispose();
+				AdminFrame.getInstance().setVisible(true);
+			}else {
+				try {
+					ResultSet rs = studentController.getStudentByLogin();
+					
+					if(LoginCheck.getInstance().loginCheck()) {
+						if(rs.next()) {
+							session.setUserId(rs.getInt("id"));
+							session.setUserName(rs.getString("student_name"));
+							session.setUserSurname(rs.getString("student_last_name"));
+							session.setUserEmail(rs.getString("email"));
+						}else {
+							JOptionPane.showMessageDialog(null, "User not found.");
+						}
+					}	
+				} catch (SQLException exp) {
+					exp.printStackTrace();
+				}
 			}
+			
 		}
 	}	
 }
