@@ -4,14 +4,17 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 
 import studentManagementSystem.view.admin.internalFrame.BaseInternalFrame;
 
 public class CourseInternalFrame extends BaseInternalFrame {
 	private static CourseInternalFrame instance;
 	
+	private JLabel lblCourse;
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JButton btnEdit;
@@ -35,6 +38,12 @@ public class CourseInternalFrame extends BaseInternalFrame {
 		scrollPane.setColumnHeaderView(table);
 		
 		Font font = new Font("Arial", Font.PLAIN, 16);
+		
+		lblCourse = new JLabel("COURSE");
+		lblCourse.setFont(font);
+		lblCourse.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCourse.setBounds(368, 12, 115, 31);
+		getContentPane().add(lblCourse);
 		
 		btnEdit = new JButton("Edit");
 		btnEdit.setBounds(368, 119, 115, 31);

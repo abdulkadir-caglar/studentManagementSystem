@@ -10,10 +10,13 @@ import javax.swing.JTable;
 import studentManagementSystem.view.admin.internalFrame.BaseInternalFrame;
 
 import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class StudentInternalFrame extends BaseInternalFrame {
 	private static StudentInternalFrame instance;
 	
+	JLabel lblStudent;
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JButton btnEdit;
@@ -52,5 +55,11 @@ public class StudentInternalFrame extends BaseInternalFrame {
 		btnAdd.setBounds(368, 200, 115, 31);
 		btnAdd.setFont(font);
 		getContentPane().add(btnAdd);
+		
+		lblStudent = new JLabel("STUDENT");
+		lblStudent.setFont(font);
+		lblStudent.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStudent.setBounds(368, 12, 115, 31);
+		getContentPane().add(lblStudent);
 	}
 }
